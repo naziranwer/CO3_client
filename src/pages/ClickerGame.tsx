@@ -1,29 +1,59 @@
-import React, { useState } from "react";
-import { useMutation, gql } from "@apollo/client";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-
+import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MainCoinArea from "../components/MainCoinArea";
 import Navbar from "../components/Navbar";
-
-const TAP_COIN_MUTATION = gql`
-  mutation TapCoin($email: String!) {
-    tapCoin(email: $email)
-  }
-`;
+import { UserInfo } from "../types/UserType";
+import { useGetUserCoins, useTapCoin } from "../lib/hooks/useUser";
 
 const ClickerGame: React.FC = () => {
-  const [email] = useState<string>("anwernazir@gmail.com");
-  const [coinBalance, setCoinBalance] = useState<number>(0);
-  const [tapCoin] = useMutation(TAP_COIN_MUTATION);
+  const location = useLocation();
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    user_id: "",
+    first_name: "",
+    last_name: "",
+    username: "",
+  });
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const userId = query.get("user_id");
+    if (userId) {
+      setUserInfo({
+        user_id: userId,
+        first_name: query.get("first_name") || "",
+        last_name: query.get("last_name") || "",
+        username: query.get("username") || "",
+      });
+    }
+  }, [location.search]);
+
+  const { data: coinsData, refetch: refetchCoins } = useGetUserCoins(
+    userInfo.user_id
+  );
+  const [tapCoin] = useTapCoin();
+  const [coinBalance, setCoinBalance] = useState<number>(
+    coinsData?.getUser.coins || 0
+  );
   const [showPlusOne, setShowPlusOne] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (coinsData?.getUser.coins !== undefined) {
+      setCoinBalance(coinsData.getUser.coins);
+    }
+  }, [coinsData]);
   const handleTap = async () => {
     try {
-      const response = await tapCoin({ variables: { email } });
-      if (response.data.tapCoin === "Coin count updated successfully.") {
-        setCoinBalance((prev) => prev + 1);
+      const response = await tapCoin({
+        variables: { email: userInfo.user_id },
+      });
+      if (response.data?.tapCoin === "Coin count updated successfully.") {
+        const { data } = await refetchCoins();
+        if (data?.getUser.coins !== undefined) {
+          setCoinBalance(data.getUser.coins);
+        }
         triggerPlusOneAnimation();
       }
     } catch (error) {
@@ -35,7 +65,7 @@ const ClickerGame: React.FC = () => {
     setShowPlusOne(true);
     setTimeout(() => {
       setShowPlusOne(false);
-    }, 1000); // Duration for the "+1" animation display
+    }, 1000);
   };
 
   return (
@@ -45,7 +75,7 @@ const ClickerGame: React.FC = () => {
       flexDirection="column"
       sx={{ backgroundColor: "#41313d" }}
     >
-      <Navbar />
+      <Navbar user={userInfo} />
       <Header coinBalance={coinBalance} />
       <MainCoinArea showPlusOne={showPlusOne} handleTap={handleTap} />
       <Footer />

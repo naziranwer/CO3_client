@@ -1,7 +1,11 @@
 import React from "react";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { UserInfo } from "../types/UserType";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  user: UserInfo;
+}
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1b1a28" }}>
       <Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
@@ -9,7 +13,7 @@ const Navbar: React.FC = () => {
 
         <Box display="flex" alignItems="center" mr={3}>
           <Typography variant="body1" ml={1} display="flex" alignItems="center">
-            {"User"}
+            {user.first_name || "User"}
           </Typography>
         </Box>
       </Toolbar>

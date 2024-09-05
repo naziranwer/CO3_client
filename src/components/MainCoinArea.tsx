@@ -1,15 +1,37 @@
-import React from "react";
-import { Box } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
+import { Box, Typography } from "@mui/material";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 interface MainCoinAreaProps {
   showPlusOne: boolean;
   handleTap: () => void;
 }
+
 const MainCoinArea: React.FC<MainCoinAreaProps> = ({
   showPlusOne,
   handleTap,
 }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const animateText = async () => {
+      await controls.start({
+        opacity: [0, 1],
+        scale: [0.8, 1],
+        transition: { duration: 0.5, ease: "easeInOut" },
+      });
+      controls.start({
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.5, ease: "easeInOut" },
+      });
+    };
+
+    const interval = setInterval(animateText, 2000);
+
+    return () => clearInterval(interval);
+  }, [controls]);
+
   return (
     <Box
       flex={1}
@@ -32,6 +54,7 @@ const MainCoinArea: React.FC<MainCoinAreaProps> = ({
         transition={{ duration: 0.2 }}
         onClick={handleTap}
       />
+
       <AnimatePresence>
         {showPlusOne && (
           <motion.div
@@ -51,6 +74,21 @@ const MainCoinArea: React.FC<MainCoinAreaProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <motion.div
+        animate={controls}
+        initial={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{
+          position: "relative",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          color: "#fff",
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+        }}
+      >
+        <Typography variant="h6">Tap on Coin</Typography>
+      </motion.div>
     </Box>
   );
 };
