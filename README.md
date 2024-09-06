@@ -42,13 +42,13 @@ Upon starting the application, you will be greeted with the main interface where
 
 ### Telegram Bot Integration
 
-The application integrates with a Telegram bot named Nazir123_bot to enhance user interaction:
+The application integrates with a Telegram bot named **Nazir123_bot** to enhance user interaction:
 
-1.Start the Bot: Open Telegram and start a chat with Nazir123_bot.
+1. **Start the Bot:** Open Telegram and start a chat with **Nazir123_bot**.
 
-2.Start Command: Send the /start command to the bot.
+2. **Start Command:** Send the /start command to the bot.
 
-3.Web App Link: The bot will respond with a message that includes a button. Clicking this button will open the TapMeApp web interface directly in your browser.
+3. **Web App Link:** The bot will respond with a message that includes a button. Clicking this button will open the TapMeApp web interface directly in your browser.
 
 ### Query Parameters
 
