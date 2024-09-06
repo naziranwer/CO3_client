@@ -1,4 +1,3 @@
-// hooks/useUser.ts
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_USER_COINS, TAP_COIN_MUTATION } from "../graphql/operation";
 
