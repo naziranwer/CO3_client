@@ -53,6 +53,7 @@ The application integrates with a Telegram bot named **Nazir123_bot** to enhance
 ### Query Parameters
 
 When accessing the application directly via a browser, include the following query parameters in the URL to load user-specific data: for example
+
 ?user_id=1356073518&first_name=Munazir&last_name=Anwer&username=Dreamy143
 
 ## Contributing
