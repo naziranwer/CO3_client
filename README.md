@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# TapMeApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TapMeApp is a modern web application built with React and TypeScript. It offers a seamless user experience by interacting with a GraphQL API, allowing users to manage and view their data effortlessly. The application also integrates with a Telegram bot to enhance user interaction and engagement.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Coin Tapping**: Users can tap on a coin to earn more coins, making the app engaging and rewarding.
+- **Real-Time Data Updates**: Instant reflection of changes in user data, ensuring a dynamic user experience.
+- **GraphQL Integration**: Communicates with a GraphQL API to fetch and manipulate user data efficiently.
+- **Telegram Bot Integration**: Facilitates user interactions and updates through a Telegram bot for added convenience.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Query Parameters](#query-parameters)
+- [Contributing](#contributing)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To get started with TapMeApp, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the Repository**
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/naziranwer/CO3_client.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Navigate to the Project Directory**
+   cd CO3_client
+3. **Install Dependencies**
+   yarn install.
+4. **Run the Application**
+   yarn start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+### Web Interface
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Upon starting the application, you will be greeted with the main interface where users can tap on coins to increase their coin balance. The UI is designed to be responsive and intuitive, built with React and styled using Material-UI.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Telegram Bot Integration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application integrates with a Telegram bot named Nazir123_bot to enhance user interaction:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.Start the Bot: Open Telegram and start a chat with Nazir123_bot.
 
-## Learn More
+2.Start Command: Send the /start command to the bot.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.Web App Link: The bot will respond with a message that includes a button. Clicking this button will open the TapMeApp web interface directly in your browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Query Parameters
 
-### Code Splitting
+When accessing the application directly via a browser, include the following query parameters in the URL to load user-specific data: for example
+?user_id=1356073518&first_name=Munazir&last_name=Anwer&username=Dreamy143
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+We welcome contributions to TapMeApp! To contribute:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Fork the Repository:** Click the "Fork" button on GitHub.
+2. **Clone Your Fork:**
+   git clone https://github.com/your-username/CO3_client.git
+3. **Create a New Branch:**
+   git checkout -b feature/your-feature
+4. **Make Your Changes:** Develop and test your changes locally.
+5. **Commit and Push:**
+   git add .
+   git commit -m "Add your message"
+   git push origin feature/your-feature
+6. **Create a Pull Request:** Open a pull request on GitHub to merge your changes.

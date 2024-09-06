@@ -49,9 +49,13 @@ const ClickerGame: React.FC = () => {
       const response = await tapCoin({
         variables: { email: userInfo.user_id },
       });
-      if (response.data?.tapCoin === "Coin count updated successfully.") {
+      if (
+        response.data?.tapCoin === "Coin count updated successfully." ||
+        "New user created and coin count set to 1."
+      ) {
         const { data } = await refetchCoins();
         if (data?.getUser.coins !== undefined) {
+          console.log("on fist click", data.getUser.coins);
           setCoinBalance(data.getUser.coins);
         }
         triggerPlusOneAnimation();
