@@ -27,12 +27,18 @@ To get started with TapMeApp, follow these steps:
 
    ```
 
-2. **Navigate to the Project Directory**
+2. **Navigate to the Project Directory:**
+   ```bash
    cd CO3_client
-3. **Install Dependencies**
+   ```
+3. **Install Dependencies:**
+   ```bash
    yarn install.
+   ```
 4. **Run the Application**
+   ```bash
    yarn start
+   ```
 
 ## Usage
 
